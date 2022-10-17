@@ -1,5 +1,5 @@
 # create the directory to backup files
-mkdir ~/scripts/config_backup
+mkdir -p ~/scripts/config_backup
 
 # backup tmux config
 cp ~/.tmux.conf ~/scripts/config_backup/.tmux.conf

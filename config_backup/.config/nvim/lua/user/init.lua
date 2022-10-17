@@ -207,6 +207,9 @@ local config = {
       -- setting a mapping to false will disable it
       -- ["<esc>"] = false,
     },
+    v = {
+      ["<leader>ss"] = { ":'<,'>Silicon<cr>", desc = "Screenshot selection" },
+    }
   },
 
   -- Configure plugins
@@ -214,6 +217,23 @@ local config = {
     init = {
         { "EdenEast/nightfox.nvim" },
         { "folke/tokyonight.nvim" },
+        { 
+          "krivahtoo/silicon.nvim", 
+          run = "./install.sh",
+          config = function()
+            require('silicon').setup({
+              font = 'ComicCode Nerd Font=16',
+              theme = 'Dracula',
+              background = '#6272a4',
+              shadow = {
+              blur_radius = 15.0,
+              offset_x = 5,
+              offset_y = 5,
+              color = '#282a36'
+  }
+            })
+          end,
+        },
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
 
