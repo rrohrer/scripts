@@ -1,6 +1,6 @@
 # Make the directories
 mkdir -p ~/.config/nvim/lua/user/
-mkdir -p ~/config/alacritty/
+mkdir -p ~/.config/alacritty/
 
 # copy the files
 cp ~/scripts/config_backup/.tmux.conf ~/.tmux.conf 
