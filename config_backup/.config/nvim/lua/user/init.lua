@@ -1,9 +1,24 @@
--- Allow clipboard copy paste in neovim
+-- Allow clipboard copy paste in neovide
 vim.g.neovide_input_use_logo = 1
 vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+
+-- Allow scaling in neovide
+vim.g.neovide_scale_factor = 1.0
+function increase_neovide_scale()
+  vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 1.25
+end
+function decrease_neovide_scale()
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 0.8
+end
+function reset_neovide_scale()
+    vim.g.neovide_scale_factor = 1.0
+end
+vim.api.nvim_set_keymap('', '<D-=>', ':lua increase_neovide_scale()', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<D-->', ':lua decrease_neovide_scale()', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<C-=>', ':lua reset_neovide_scale()', { noremap = true, silent = true })
 
 --              AstroNvim Configuration Table
 -- All configuration changes should go inside of the table below
