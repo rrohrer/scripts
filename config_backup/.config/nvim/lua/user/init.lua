@@ -50,7 +50,8 @@ local config = {
   -- Set colorscheme to use
   -- colorscheme = "default_theme",
   -- colorscheme = "duskfox",
-  colorscheme = "tokyonight-storm",
+  -- colorscheme = "tokyonight-storm",
+  colorscheme = "gruvbox",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -230,6 +231,7 @@ local config = {
   -- Configure plugins
   plugins = {
     init = {
+        { "gruvbox-community/gruvbox" },
         { "EdenEast/nightfox.nvim" },
         { "folke/tokyonight.nvim" },
         { 
