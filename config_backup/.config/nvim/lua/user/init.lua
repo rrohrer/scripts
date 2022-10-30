@@ -240,13 +240,13 @@ local config = {
           config = function()
             require('silicon').setup({
               font = 'ComicCode Nerd Font=16',
-              theme = 'Dracula',
-              background = '#6272a4',
+              theme = 'gruvbox',
+              background = '#3c3836',
               shadow = {
-              blur_radius = 15.0,
-              offset_x = 5,
-              offset_y = 5,
-              color = '#282a36'
+              blur_radius = 30.0,
+              offset_x = 0,
+              offset_y = 0,
+              color = '#282828'
   }
             })
           end,
