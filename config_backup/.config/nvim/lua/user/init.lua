@@ -61,6 +61,10 @@ local config = {
     -- duskfox = { -- a table of overrides/changes to the duskfox theme
     --   Normal = { bg = "#000000" },
     -- },
+    gruvbox = {
+        DiagnosticWarn = { fg = "#458588" },
+        DiagnosticError = { fg = "#d3869b" },
+    },
   },
 
   -- set vim options here (vim.<first_key>.<second_key> =  value)
