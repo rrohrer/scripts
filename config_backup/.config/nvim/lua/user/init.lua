@@ -64,6 +64,7 @@ local config = {
     gruvbox = {
         DiagnosticWarn = { fg = "#458588" },
         DiagnosticError = { fg = "#d3869b" },
+        Function = { fg = "#8EC07C" },
     },
   },
 
