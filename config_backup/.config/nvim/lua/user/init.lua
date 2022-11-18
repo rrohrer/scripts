@@ -16,9 +16,9 @@ end
 function reset_neovide_scale()
     vim.g.neovide_scale_factor = 1.0
 end
-vim.api.nvim_set_keymap('', '<D-=>', ':lua increase_neovide_scale()', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<D-->', ':lua decrease_neovide_scale()', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<C-=>', ':lua reset_neovide_scale()', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<D-=>', ':lua increase_neovide_scale()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<D-->', ':lua decrease_neovide_scale()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<C-=>', ':lua reset_neovide_scale()<CR>', { noremap = true, silent = true })
 
 --              AstroNvim Configuration Table
 -- All configuration changes should go inside of the table below
