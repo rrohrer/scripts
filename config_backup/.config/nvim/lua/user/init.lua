@@ -20,6 +20,9 @@ vim.api.nvim_set_keymap('', '<D-=>', ':lua increase_neovide_scale()<CR>', { nore
 vim.api.nvim_set_keymap('', '<D-->', ':lua decrease_neovide_scale()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', '<C-=>', ':lua reset_neovide_scale()<CR>', { noremap = true, silent = true })
 
+-- Add support for wgsl files.
+vim.filetype.add({extension = {wgsl = "wgsl"}})
+
 --              AstroNvim Configuration Table
 -- All configuration changes should go inside of the table below
 
