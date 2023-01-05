@@ -5,6 +5,10 @@ vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true}
 vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
+-- Allow prettier format of html in rust (yew macros)
+-- Added below in the user section... this is the original saved for posterity.
+-- vim.api.nvim_set_keymap( 'n', '<F7>', 'vi{:! prettier --parser html --stdin-filepath<CR>vi{>', {noremap = true})
+
 -- Allow scaling in neovide
 vim.g.neovide_scale_factor = 1.0
 function increase_neovide_scale()
@@ -224,6 +228,7 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+      ["<leader>fp"] = { "vi{:! prettier --parser html --stdin-filepath<CR>vi{>", desc = "Prettier Format {}" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
