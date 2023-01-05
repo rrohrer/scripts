@@ -6,3 +6,4 @@ brew install --cask iterm2
 brew install --cask alacritty
 brew install neovim
 brew install --cask neovide
+brew install prettier
