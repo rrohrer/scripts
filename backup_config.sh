@@ -16,6 +16,10 @@ cp ~/.config/alacritty/alacritty.yml ~/scripts/config_backup/.config/alacritty/a
 mkdir -p ~/scripts/config_backup/.config/helix
 cp ~/.config/helix/config.toml ~/scripts/config_backup/.config/helix/config.toml
 
+# backup helix custom themes
+mkdir -p ~/scripts/config_backup/.config/helix/themes
+cp ~/.config/helix/themes/gruvbox-fixed.toml ~/scripts/config_backup/.config/helix/themes/gruvbox-fixed.toml
+
 # backup the zellij config
 mkdir -p ~/scripts/config_backup/.config/zellij
 cp ~/.config/zellij/config.kdl ~/scripts/config_backup/.config/zellij/config.kdl
