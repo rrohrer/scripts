@@ -6,3 +6,4 @@ brew install zellij
 brew install rust-analyzer
 brew install helix
 brew install tree
+brew install silicon

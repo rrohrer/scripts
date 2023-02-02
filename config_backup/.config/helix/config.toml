@@ -13,3 +13,7 @@ render = true
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[keys.normal.space]
+"i" = [ ":clipboard-yank", ":sh silicon --from-clipboard -l rs -f 'ComicCode Nerd Font=16' --theme 'gruvbox-dark' -b '#3c3836' --shadow-color '#282828' --shadow-blur-radius 30 --shadow-offset-x 0 --shadow-offset-y 0 --to-clipboard" ]
+"H" = [ ":pipe prettier --parser html --stdin-filepath", "indent" ]
