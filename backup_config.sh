@@ -8,7 +8,7 @@ cp ~/.tmux.conf ~/scripts/config_backup/.tmux.conf
 # mkdir -p ~/scripts/config_backup/.config/nvim/lua/user
 # cp ~/.config/nvim/lua/user/init.lua ~/scripts/config_backup/.config/nvim/lua/user/init.lua
 mkdir -p ~/scripts/config_backup/.config/nvim/
-cp -r ~/.config/nvim/ ~/scripts/config_backup/nvim/
+cp -r ~/.config/nvim/ ~/scripts/config_backup/.config/nvim/
 rm -rf ~/scripts/config_backup/nvim/plugin/
 
 # backup alacritty config
