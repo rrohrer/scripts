@@ -5,8 +5,11 @@ mkdir -p ~/scripts/config_backup
 cp ~/.tmux.conf ~/scripts/config_backup/.tmux.conf
 
 # backup neovim config 
-mkdir -p ~/scripts/config_backup/.config/nvim/lua/user
-cp ~/.config/nvim/lua/user/init.lua ~/scripts/config_backup/.config/nvim/lua/user/init.lua
+# mkdir -p ~/scripts/config_backup/.config/nvim/lua/user
+# cp ~/.config/nvim/lua/user/init.lua ~/scripts/config_backup/.config/nvim/lua/user/init.lua
+mkdir -p ~/scripts/config_backup/.config/nvim/
+cp -r ~/.config/nvim/ ~/scripts/config_backup/nvim/
+rm -rf ~/scripts/config_backup/nvim/plugin/
 
 # backup alacritty config
 mkdir -p ~/scripts/config_backup/.config/alacritty
