@@ -26,6 +26,8 @@ vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
+    pattern = { "*" },
+    command = [[%s/\s\+$//e]],
 })
+
+vim.opt.clipboard = 'unnamedplus'
