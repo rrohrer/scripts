@@ -6,30 +6,32 @@ lsp.preset('recommended')
 lsp.nvim_workspace()
 
 lsp.ensure_installed({
-    'tsserver',
-    'eslint',
-    'sumneko_lua',
-    'rust_analyzer',
-    'clangd',
-    'bashls',
+  'tsserver',
+  'eslint',
+  'rust_analyzer',
+  'clangd',
+  'bashls',
 })
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-    })
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ["<C-Space>"] = cmp.mapping.complete(),
+})
 
 lsp.set_preferences({
-    sign_icons = {}
+  sign_icons = {}
 })
 
 lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
+  mapping = cmp_mappings
 })
+
+-- Generally MASON manages this, but mason doesn't know about gdscript
+lsp.setup_servers({ 'gdscript' })
 
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
@@ -50,6 +52,9 @@ lsp.setup()
 
 -- Format on save.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*" },
-    command = "lua vim.lsp.buf.formatting_sync()",
+  pattern = { "*" },
+  command = "lua vim.lsp.buf.formatting_sync()",
 })
+
+-- this works but doesn't use the lsp-zero settings I made.
+-- require'lspconfig'.gdscript.setup{}
