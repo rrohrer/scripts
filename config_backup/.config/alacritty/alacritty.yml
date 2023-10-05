@@ -182,3 +182,11 @@ schemes:
 
 # Apply the color scheme.
 colors: *gruvbox_material_soft_dark
+
+window:
+  # Make `Option` key behave as `Alt` (macOS only):
+  #   - OnlyLeft
+  #   - OnlyRight
+  #   - Both
+  #   - None (default)
+  option_as_alt: OnlyLeft
