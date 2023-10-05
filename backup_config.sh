@@ -21,7 +21,7 @@ cp ~/.config/helix/config.toml ~/scripts/config_backup/.config/helix/config.toml
 
 # backup helix custom themes
 mkdir -p ~/scripts/config_backup/.config/helix/themes
-cp ~/.config/helix/themes/gruvbox-fixed.toml ~/scripts/config_backup/.config/helix/themes/gruvbox-fixed.toml
+cp -r ~/.config/helix/themes/ ~/scripts/config_backup/.config/helix/themes/
 
 # backup the zellij config
 mkdir -p ~/scripts/config_backup/.config/zellij

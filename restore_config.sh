@@ -12,5 +12,5 @@ cp ~/scripts/config_backup/.tmux.conf ~/.tmux.conf
 cp -r ~/scripts/config_backup/.config/nvim/ ~/.config/nvim/
 cp ~/scripts/config_backup/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 cp ~/scripts/config_backup/.config/helix/config.toml ~/.config/helix/config.toml
-cp ~/scripts/config_backup/.config/helix/themes/gruvbox-fixed.toml ~/.config/helix/themes/gruvbox-fixed.toml
+cp -r ~/scripts/config_backup/.config/helix/themes/ ~/.config/helix/themes/
 cp ~/scripts/config_backup/.config/zellij/config.kdl ~/.config/zellij/config.kdl
