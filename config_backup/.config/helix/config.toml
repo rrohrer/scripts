@@ -1,10 +1,11 @@
-theme = "gruvbox-fixed"
+theme = "gruvbox_material_dark_soft"
 
 [editor]
 line-number = "relative"
 true-color = true
 cursorline = true
 color-modes = true
+auto-format = true
 
 [editor.indent-guides]
 render = true

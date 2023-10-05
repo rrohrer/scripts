@@ -53,7 +53,7 @@ lsp.setup()
 -- Format on save.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
-  command = "lua vim.lsp.buf.formatting_sync()",
+  command = "lua vim.lsp.buf.format()",
 })
 
 -- this works but doesn't use the lsp-zero settings I made.

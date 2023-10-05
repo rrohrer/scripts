@@ -1,3 +1,7 @@
 inherits = "gruvbox"
 
-function = { fg = "#689d6a" }
+#"function" = { fg = "#689d6a" }
+comment = {fg = "#928374"}
+
+[palette]
+bg0 = "#32302f" # main background
