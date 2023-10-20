@@ -51,10 +51,14 @@ end)
 lsp.setup()
 
 -- Format on save.
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = "lua vim.lsp.buf.format()",
-})
+local do_not_format = os.getenv("DO_NOT_FORMAT") or 0
+
+if do_not_format == 0 then
+  vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = { "*" },
+    command = "lua vim.lsp.buf.format()",
+  })
+end
 
 -- this works but doesn't use the lsp-zero settings I made.
 -- require'lspconfig'.gdscript.setup{}

@@ -25,9 +25,13 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+local do_not_format = os.getenv("DO_NOT_FORMAT") or 0
+
+if do_not_format == 0 then
+  vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
     command = [[%s/\s\+$//e]],
-})
+  })
+end
 
 vim.opt.clipboard = 'unnamedplus'
