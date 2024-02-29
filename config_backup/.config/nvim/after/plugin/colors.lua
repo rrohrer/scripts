@@ -11,3 +11,6 @@ function EnsureCustomColorTheme(color)
 end
 
 EnsureCustomColorTheme()
+
+-- this highlights TODO: etc.
+vim.api.nvim_set_hl(0, '@text.note', { link = 'Todo' })
