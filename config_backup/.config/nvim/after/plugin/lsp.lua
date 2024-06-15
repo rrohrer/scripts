@@ -50,6 +50,11 @@ end)
 
 lsp.setup()
 
+-- Setup inline diagnostic messages
+vim.diagnostic.config({
+  virtual_text = true
+})
+
 -- Format on save.
 local do_not_format = os.getenv("DO_NOT_FORMAT") or 0
 
