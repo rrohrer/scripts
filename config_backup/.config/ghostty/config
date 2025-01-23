@@ -1,0 +1,6 @@
+theme = gruvbox-material-soft-dark
+font-family = Berkeley Mono
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-size = 11

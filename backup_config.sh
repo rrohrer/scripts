@@ -27,3 +27,10 @@ cp -r ~/.config/helix/themes/ ~/scripts/config_backup/.config/helix/themes/
 # backup the zellij config
 mkdir -p ~/scripts/config_backup/.config/zellij
 cp ~/.config/zellij/config.kdl ~/scripts/config_backup/.config/zellij/config.kdl
+
+# backup ghostty config
+mkdir -p ~/scripts/config_backup/.config/ghostty/themes
+cp -r ~/.config/ghostty/themes/ ~/scripts/config_backup/.config/ghostty/themes/
+cp ~/.config/ghostty/config ~/scripts/config_backup/.config/ghostty/config
+
+cp ~/.zshrc ~/scripts/config_backup/.zshrc
