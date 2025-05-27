@@ -35,3 +35,4 @@ if do_not_format == 0 then
 end
 
 vim.opt.clipboard = 'unnamedplus'
+

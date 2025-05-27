@@ -9,3 +9,4 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Allow prettier format of html in rust (yew macros)
 vim.keymap.set("n", "<leader>fp", "vi{:! prettier --parser html --stdin-filepath<CR>vi{>vi{>")
+

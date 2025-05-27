@@ -24,7 +24,9 @@ function EnsureCustomColorTheme(color)
   -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-EnsureCustomColorTheme()
-
--- this highlights TODO: etc.
-vim.api.nvim_set_hl(0, '@text.note', { link = 'Todo' })
+return {
+  "sainnhe/gruvbox-material",
+  config = function()
+    EnsureCustomColorTheme()
+  end
+}
