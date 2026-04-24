@@ -6,3 +6,4 @@ eval "$(starship init zsh)"
 export PLAYDATE_SDK_PATH="$HOME/Developer/PlaydateSDK"
 export PATH="$PATH:$PLAYDATE_SDK_ROOT/bin"
 
+export PATH="$HOME/.local/bin:$PATH"
