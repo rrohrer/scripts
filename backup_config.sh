@@ -34,3 +34,7 @@ cp -r ~/.config/ghostty/themes/ ~/scripts/config_backup/.config/ghostty/themes/
 cp ~/.config/ghostty/config ~/scripts/config_backup/.config/ghostty/config
 
 cp ~/.zshrc ~/scripts/config_backup/.zshrc
+
+mkdir -p ~/scripts/config_backup/.pi/agent/extensions
+cp -r ~/.pi/agent/extensions/ ~/scripts/config_backup/.pi/agent/extensions/
+
