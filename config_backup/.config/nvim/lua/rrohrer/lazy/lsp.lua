@@ -1,140 +1,114 @@
-local root_files = {
-  '.luarc.json',
-  '.luarc.jsonc',
-  '.luacheckrc',
-  '.stylua.toml',
-  'stylua.toml',
-  'selene.toml',
-  'selene.yml',
-  '.git',
-}
-
 return {
+  -- LSP
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "stevearc/conform.nvim",
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/nvim-cmp",
-        "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
-        "j-hui/fidget.nvim",
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+      "j-hui/fidget.nvim",
+      "saghen/blink.cmp",
     },
     config = function()
-        require("conform").setup({
-            formatters_by_ft = {
-            }
-        })
-        local cmp = require('cmp')
-        local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
+      require("fidget").setup({})
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls", "rust_analyzer", "zls", "clangd", "bashls",
+        },
+        -- v2: replaces the old `handlers = { ... }` pattern.
+        -- Calls vim.lsp.enable() for every installed server.
+        automatic_enable = true,
+      })
 
-        require("fidget").setup({})
-        require("mason").setup()
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "rust_analyzer",
-                "zls",
-                "clangd",
-                "bashls",
+      -- Apply blink.cmp's extra capabilities to every LSP, globally.
+      vim.lsp.config("*", {
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
+      })
+
+      -- Per-server overrides. These get merged on top of whatever
+      -- nvim-lspconfig ships in its lsp/<name>.lua files.
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            format = {
+              enable = true,
+              defaultConfig = {
+                indent_style = "space",
+                indent_size  = "2",
+              },
             },
-            handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
+          },
+        },
+      })
 
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
+      vim.lsp.config("zls", {
+        -- replaces lspconfig.util.root_pattern(...)
+        root_markers = { ".git", "build.zig", "zls.json" },
+        settings = {
+          zls = {
+            enable_inlay_hints = true,
+            enable_snippets    = true,
+            warn_style         = true,
+          },
+        },
+      })
+      vim.g.zig_fmt_parse_errors = 0
+      vim.g.zig_fmt_autosave = 0
 
-                end,
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                format = {
-                                    enable = true,
-                                    -- Put format options here
-                                    -- NOTE: the value should be STRING!!
-                                    defaultConfig = {
-                                        indent_style = "space",
-                                        indent_size = "2",
-                                    }
-                                },
-                            }
-                        }
-                    }
-                end,
-            }
+      -- Diagnostics. Note: `source = "always"` was deprecated; use `true`.
+      vim.diagnostic.config({
+        virtual_text = true,
+        float = {
+          focusable = false,
+          style     = "minimal",
+          border    = "rounded",
+          source    = true,
+          header    = "",
+          prefix    = "",
+        },
+      })
+
+      -- Format on save
+      if (os.getenv("DO_NOT_FORMAT") or "0") == "0" then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*",
+          callback = function(args)
+            vim.lsp.buf.format({ bufnr = args.buf })
+          end,
         })
+      end
+    end,
+  },
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-        cmp.setup({
-            snippet = {
-                expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                end,
-            },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                ["<C-Space>"] = cmp.mapping.complete(),
-            }),
-            sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
-            }, {
-                { name = 'buffer' },
-            })
-        })
-
-        vim.diagnostic.config({
-            virtual_text = true,
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = "",
-            },
-        })
-
-        -- Format on save.
-        local do_not_format = os.getenv("DO_NOT_FORMAT") or 0
-
-        if do_not_format == 0 then
-          vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-            pattern = { "*" },
-            command = "lua vim.lsp.buf.format()",
-          })
-        end
-
-    end
+  -- Completion: blink.cmp replaces nvim-cmp + cmp-nvim-lsp + cmp-buffer
+  -- + cmp-path + cmp-cmdline + cmp_luasnip in a single plugin.
+  {
+    "saghen/blink.cmp",
+    version = "1.*", -- pinned to a stable release with prebuilt binary
+    dependencies = {
+      "L3MON4D3/LuaSnip",
+      "rafamadriz/friendly-snippets", -- optional snippet library
+    },
+    event = "InsertEnter",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        -- Closest to your old C-p / C-n / C-y / C-space mappings:
+        preset = "default",
+        ["<C-p>"] = { "select_prev", "fallback" },
+        ["<C-n>"] = { "select_next", "fallback" },
+        ["<C-y>"] = { "select_and_accept" },
+        ["<C-Space>"] = { "show", "fallback" },
+      },
+      snippets = { preset = "luasnip" },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      completion = {
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning" },
+    },
+  },
 }
