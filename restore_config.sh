@@ -21,4 +21,7 @@ cp ~/scripts/config_backup/.config/ghostty/config ~/.config/ghostty/config
 cp -r ~/scripts/config_backup/.config/ghostty/themes/ ~/.config/ghostty/themes/
 cp ~/scripts/config_backup/.zshrc ~/.zshrc
 cp -r ~/scripts/config_backup/.pi/agent/extensions/ ~/.pi/agent/extensions/
+cp -r ~/scripts/config_backup/.pi/agent/agents/ ~/.pi/agent/agents/
+cp -r ~/scripts/config_backup/.pi/agent/prompts/ ~/.pi/agent/prompts/
+cp -r ~/scripts/config_backup/.pi/agent/themes/ ~/.pi/agent/themes/
 

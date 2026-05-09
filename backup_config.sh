@@ -38,3 +38,11 @@ cp ~/.zshrc ~/scripts/config_backup/.zshrc
 mkdir -p ~/scripts/config_backup/.pi/agent/extensions
 cp -r ~/.pi/agent/extensions/ ~/scripts/config_backup/.pi/agent/extensions/
 
+mkdir -p ~/scripts/config_backup/.pi/agent/agents
+cp -r ~/.pi/agent/agents/ ~/scripts/config_backup/.pi/agent/agents/
+
+mkdir -p ~/scripts/config_backup/.pi/agent/prompts
+cp -r ~/.pi/agent/prompts/ ~/scripts/config_backup/.pi/agent/prompts/
+
+mkdir -p ~/scripts/config_backup/.pi/agent/themes
+cp -r ~/.pi/agent/themes/ ~/scripts/config_backup/.pi/agent/themes/
