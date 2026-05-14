@@ -1,8 +1,6 @@
 import type { Theme } from "@earendil-works/pi-coding-agent";
 import { truncateToWidth } from "@earendil-works/pi-tui";
 import {
-	findActiveTask,
-	findNextPendingTask,
 	getPhaseCounts,
 	hasTodos,
 	summarizeState,
@@ -139,35 +137,15 @@ export function makeTodoView(
 export function formatWidgetLines(state: TodoState | undefined, theme: Theme, width: number): string[] {
 	if (!hasTodos(state)) return [];
 	const summary = summarizeState(state);
-	const lines: string[] = [];
-	const title = summary.title ? ` ${summary.title}` : "";
-	lines.push(
-		fit(
-			`${theme.fg("accent", "Todo")}${title} ${theme.fg("muted", `${summary.completed}/${summary.total}`)} ${theme.fg("dim", `${summary.percentComplete}%`)}`,
-			width,
-		),
-	);
-
-	const active = findActiveTask(state);
-	if (active) {
-		const counts = getPhaseCounts(active.phase);
-		lines.push(fit(`${theme.fg("accent", "▶")} ${active.phase.title} ${theme.fg("dim", `${counts.completed}/${counts.total}`)}`, width));
-		lines.push(fit(`  ${theme.fg("accent", active.task.id)} ${active.task.text}`, width));
-		if (active.task.note) lines.push(fit(`  ${theme.fg("dim", `note: ${firstLine(active.task.note, 96)}`)}`, width));
-	} else if (summary.blocked > 0) {
-		lines.push(fit(theme.fg("warning", `${summary.blocked} blocked task(s)`), width));
-	}
-
-	const next = findNextPendingTask(state);
-	if (next) {
-		lines.push(fit(`${theme.fg("muted", "next:")} ${theme.fg("accent", next.task.id)} ${next.task.text}`, width));
-	}
-
-	const hiddenCompletedPhases = state.phases.filter((phase) => getPhaseCounts(phase).open === 0 && phase.tasks.length > 0).length;
-	const remaining = summary.total - summary.completed - summary.abandoned;
-	lines.push(fit(theme.fg("dim", `${remaining} open • ${hiddenCompletedPhases} completed phase(s) may be collapsed`), width));
-
-	return lines.slice(0, 8);
+	const remaining = summary.open;
+	const denominator = Math.max(1, summary.completed + remaining);
+	const barWidth = Math.max(8, Math.min(28, width - 44));
+	const filled = Math.max(0, Math.min(barWidth, Math.round((summary.completed / denominator) * barWidth)));
+	const empty = Math.max(0, barWidth - filled);
+	const bar = theme.fg("success", "█".repeat(filled)) + theme.fg("dim", "░".repeat(empty));
+	const remainingText = remaining === 1 ? "1 remaining" : `${remaining} remaining`;
+	const completedText = summary.completed === 1 ? "1 completed" : `${summary.completed} completed`;
+	return [fit(`${theme.fg("accent", "Todo")} [${bar}] ${theme.fg("success", completedText)} ${theme.fg("dim", "•")} ${theme.fg("muted", remainingText)}`, width)];
 }
 
 export function formatToolDetails(details: TodoToolRenderDetails, theme: Theme, expanded: boolean): string {

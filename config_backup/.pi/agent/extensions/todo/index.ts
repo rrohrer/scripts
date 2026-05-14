@@ -201,6 +201,11 @@ export default function todoExtension(pi: ExtensionAPI): void {
 	});
 
 	pi.on("agent_end", async (_event, ctx) => {
+		if (hasTodos(currentState) && summarizeState(currentState).open === 0) {
+			await applyAndPersist({ type: "clear", timestamp: nowIso() }, ctx);
+			return;
+		}
+
 		if (!hasOpenTodos(currentState)) return;
 		if (todoToolCalledThisRun) return;
 		const result = await applyAndPersist({ type: "missed_update", timestamp: nowIso() }, ctx);
