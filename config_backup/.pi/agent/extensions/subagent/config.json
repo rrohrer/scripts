@@ -1,0 +1,6 @@
+{
+  "control": {
+    "needsAttentionAfterMs": 180000,
+    "activeNoticeAfterMs": 300000
+  }
+}
