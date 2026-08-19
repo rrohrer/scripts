@@ -7,6 +7,7 @@ mkdir -p ~/.config/helix/themes/
 mkdir -p ~/.config/zellij/
 mkdir -p ~/.config/ghostty/themes/
 mkdir -p ~/.config/kitty/
+mkdir -p ~/.omp/agent/extensions/
 mkdir -p ~/.pi/agent/extensions/
 
 # copy the files
@@ -21,6 +22,8 @@ cp ~/scripts/config_backup/.config/zellij/config.kdl ~/.config/zellij/config.kdl
 cp ~/scripts/config_backup/.config/ghostty/config ~/.config/ghostty/config
 cp -r ~/scripts/config_backup/.config/ghostty/themes/. ~/.config/ghostty/themes/
 cp ~/scripts/config_backup/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+cp ~/scripts/config_backup/.omp/agent/config.yml ~/.omp/agent/config.yml
+cp -r ~/scripts/config_backup/.omp/agent/extensions/. ~/.omp/agent/extensions/
 cp ~/scripts/config_backup/.zshrc ~/.zshrc
 cp -r ~/scripts/config_backup/.pi/agent/extensions/. ~/.pi/agent/extensions/
 cp -r ~/scripts/config_backup/.pi/agent/agents/. ~/.pi/agent/agents/

@@ -37,6 +37,11 @@ cp ~/.config/ghostty/config ~/scripts/config_backup/.config/ghostty/config
 mkdir -p ~/scripts/config_backup/.config/kitty
 cp ~/.config/kitty/kitty.conf ~/scripts/config_backup/.config/kitty/kitty.conf
 
+# backup omp config and extensions (not sessions, DBs, blobs, or other large/ephemeral state)
+mkdir -p ~/scripts/config_backup/.omp/agent/extensions
+cp ~/.omp/agent/config.yml ~/scripts/config_backup/.omp/agent/config.yml
+cp -r ~/.omp/agent/extensions/. ~/scripts/config_backup/.omp/agent/extensions/
+
 cp ~/.zshrc ~/scripts/config_backup/.zshrc
 
 mkdir -p ~/scripts/config_backup/.pi/agent/extensions

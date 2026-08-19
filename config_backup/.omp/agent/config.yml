@@ -1,0 +1,35 @@
+providers: 
+  webSearchOrder: 
+    - gemini
+    - perplexity
+    - anthropic
+    - codex
+    - xai
+    - zai
+    - exa
+    - tinyfish
+    - jina
+    - kagi
+    - tavily
+    - firecrawl
+    - brave
+    - kimi
+    - parallel
+    - synthetic
+    - searxng
+    - startpage
+    - duckduckgo
+    - ecosia
+    - google
+    - mojeek
+    - public
+modelRoles: 
+  default: kimi-code/k3-256k:low
+  vision: google-antigravity/gemini-3.5-flash
+  plan: kimi-code/k3:max
+  tiny: openai-codex/gpt-5.6-luna:low
+  task: openai-codex/gpt-5.6-luna:medium
+symbolPreset: nerd
+theme: 
+  dark: dark-gruvbox
+setupVersion: 1
