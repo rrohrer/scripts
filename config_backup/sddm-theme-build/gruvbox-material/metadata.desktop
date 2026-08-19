@@ -1,0 +1,11 @@
+[SddmGreeterTheme]
+Name=Gruvbox Material
+Description=Warm gruvbox-material greeter matching the Hyprland desktop
+Author=rainroar
+License=MIT
+Type=sddm-theme
+Version=1.0
+Theme-Id=gruvbox-material
+Theme-API=2.0
+MainScript=Main.qml
+ConfigFile=theme.conf

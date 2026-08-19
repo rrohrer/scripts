@@ -1,0 +1,59 @@
+/* wofi — warm gruvbox-material launcher */
+window {
+    margin: 0;
+    background-color: rgba(34, 24, 18, 0.96);
+    border: 2px solid #e78a4e;
+    border-radius: 14px;
+    font-family: "Hack Nerd Font", monospace;
+    font-size: 14px;
+    color: #d4be98;
+}
+
+#outer-box {
+    margin: 16px;
+}
+
+#input {
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    color: #d4be98;
+    background-color: #32302f;
+    border: 1px solid #45403d;
+}
+
+#input:focus {
+    border: 1px solid #d8a657;
+}
+
+#scroll {
+    margin: 0;
+}
+
+#inner-box {
+    margin: 0;
+}
+
+#text {
+    color: #d4be98;
+    margin: 0 8px;
+}
+
+#entry {
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+#entry:selected {
+    background: linear-gradient(135deg, #e78a4e, #d8a657);
+}
+
+#entry:selected #text {
+    color: #221812;
+    font-weight: bold;
+}
+
+#entry image {
+    margin-right: 8px;
+}

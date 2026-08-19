@@ -1,0 +1,127 @@
+/* ==========================================================
+   Waybar — warm gruvbox-material, colors pulled from the
+   Monument Valley sunset wallpaper (browns/amber/orange)
+   ========================================================== */
+
+@define-color bg        #221812;  /* deep wallpaper shadow brown          */
+@define-color bg-alt    #2d2119;  /* slightly lifted panel                */
+@define-color bg1       #45403d;  /* gruvbox bg1                          */
+@define-color fg        #d4be98;  /* gruvbox fg                           */
+@define-color dim       #a89984;  /* muted text                          */
+@define-color orange    #e78a4e;  /* sunset mesa / active accent          */
+@define-color yellow    #d8a657;  /* amber sky                            */
+@define-color red       #ea6962;
+@define-color green     #a9b665;
+@define-color aqua      #89b482;
+@define-color blue      #7daea3;
+@define-color purple    #d3869b;
+
+* {
+    font-family: "Hack Nerd Font", "Hack Nerd Font Mono";
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @fg;
+}
+
+/* shared pill styling */
+#workspaces,
+#submap,
+#window,
+#tray,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#clock {
+    background: @bg;
+    padding: 0 12px;
+    margin: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(231, 138, 78, 0.18);
+}
+
+/* ---- Workspaces ---- */
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    color: @dim;
+    padding: 0 8px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: @fg;
+    background: @bg-alt;
+}
+
+#workspaces button.active {
+    color: @bg;
+    background: linear-gradient(135deg, @orange, @yellow);
+    box-shadow: 0 0 6px rgba(231, 138, 78, 0.4);
+}
+
+#workspaces button.urgent {
+    color: @bg;
+    background: @red;
+}
+
+/* ---- Center window title ---- */
+#window {
+    color: @fg;
+    font-weight: 500;
+}
+
+window#waybar.empty #window {
+    background: transparent;
+    border-color: transparent;
+}
+
+#submap {
+    color: @bg;
+    background: @purple;
+}
+
+/* ---- Right cluster accents ---- */
+#clock      { color: @yellow; }
+#cpu        { color: @green;  }
+#memory     { color: @aqua;   }
+#network    { color: @blue;   }
+#pulseaudio { color: @orange; }
+
+#pulseaudio.muted { color: @dim; }
+
+#network.disconnected { color: @red; }
+
+/* ---- Tray ---- */
+#tray {
+    padding: 0 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: @red;
+    border-radius: 10px;
+}
+
+tooltip {
+    background: @bg;
+    border: 1px solid @orange;
+    border-radius: 8px;
+    color: @fg;
+}
