@@ -33,6 +33,10 @@ mkdir -p ~/scripts/config_backup/.config/ghostty/themes
 cp -r ~/.config/ghostty/themes/. ~/scripts/config_backup/.config/ghostty/themes/
 cp ~/.config/ghostty/config ~/scripts/config_backup/.config/ghostty/config
 
+# backup kitty config
+mkdir -p ~/scripts/config_backup/.config/kitty
+cp ~/.config/kitty/kitty.conf ~/scripts/config_backup/.config/kitty/kitty.conf
+
 cp ~/.zshrc ~/scripts/config_backup/.zshrc
 
 mkdir -p ~/scripts/config_backup/.pi/agent/extensions
