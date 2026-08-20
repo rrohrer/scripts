@@ -102,6 +102,34 @@ window#waybar.empty #window {
 
 #pulseaudio.muted { color: @dim; }
 
+#power-profiles-daemon {
+    background: @bg;
+    padding: 0 12px;
+    margin: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(231, 138, 78, 0.18);
+}
+
+#battery {
+    background: @bg;
+    padding: 0 12px;
+    margin: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(231, 138, 78, 0.18);
+}
+
+#power-profiles-daemon.performance  { color: @red;    }
+#power-profiles-daemon.balanced     { color: @yellow; }
+#power-profiles-daemon.power-saver  { color: @green;  }
+
+#battery           { color: @green;  }
+#battery.charging,
+#battery.plugged   { color: @aqua;   }
+#battery.warning:not(.charging)  { color: @yellow; }
+#battery.critical:not(.charging) { color: @red; animation: blink 1s steps(2) infinite; }
+
+@keyframes blink { to { color: @bg; } }
+
 #network.disconnected { color: @red; }
 
 /* ---- Tray ---- */
