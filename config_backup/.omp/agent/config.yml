@@ -32,4 +32,6 @@ modelRoles:
 symbolPreset: nerd
 theme: 
   dark: dark-gruvbox
-setupVersion: 1
+setupVersion: 2
+composer: 
+  shape: box
