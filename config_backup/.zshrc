@@ -9,3 +9,10 @@ export PATH="$PATH:$PLAYDATE_SDK_ROOT/bin"
 export PATH="$HOME/.local/bin:$PATH"
 
 alias tm='tmux -S /tmp/tmux-shared'
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/ryanrohrer/.local/bin:$PATH"
+
+# make sure omp uses nvim
+export VISUAL="nvim"
