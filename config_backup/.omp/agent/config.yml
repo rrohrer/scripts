@@ -1,5 +1,5 @@
-providers: 
-  webSearchOrder: 
+providers:
+  webSearchOrder:
     - gemini
     - perplexity
     - anthropic
@@ -23,15 +23,20 @@ providers:
     - google
     - mojeek
     - public
-modelRoles: 
-  default: kimi-code/k3-256k:low
-  vision: google-antigravity/gemini-3.5-flash
+modelRoles:
+  default: deepseek/deepseek-v4-flash:max
+  vision: openai-codex/gpt-6-astra:low
   plan: kimi-code/k3:max
   tiny: openai-codex/gpt-5.6-luna:low
   task: openai-codex/gpt-5.6-luna:medium
+  slow: openai-codex/gpt-6-astra:max
 symbolPreset: nerd
-theme: 
+theme:
   dark: dark-gruvbox
 setupVersion: 2
-composer: 
+composer:
   shape: box
+statusLine:
+  preset: default
+  compactThinkingLevel: false
+hideThinkingBlock: true

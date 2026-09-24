@@ -17,6 +17,7 @@ mkdir -p ~/.config/helix/themes/
 mkdir -p ~/.config/zellij/
 mkdir -p ~/.config/ghostty/themes/
 mkdir -p ~/.config/kitty/
+mkdir -p ~/.omp/agent/
 mkdir -p ~/.omp/agent/extensions/
 mkdir -p ~/.pi/agent/extensions/
 
@@ -33,6 +34,7 @@ cp "$BACKUP"/.config/ghostty/config ~/.config/ghostty/config
 cp -r "$BACKUP"/.config/ghostty/themes/. ~/.config/ghostty/themes/
 cp "$BACKUP"/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 cp "$BACKUP"/.omp/agent/config.yml ~/.omp/agent/config.yml
+cp "$BACKUP"/.omp/agent/models.yml ~/.omp/agent/models.yml
 cp -r "$BACKUP"/.omp/agent/extensions/. ~/.omp/agent/extensions/
 cp "$BACKUP"/.zshrc ~/.zshrc
 cp -r "$BACKUP"/.pi/agent/extensions/. ~/.pi/agent/extensions/

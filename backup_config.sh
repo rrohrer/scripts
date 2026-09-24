@@ -44,6 +44,7 @@ cp ~/.config/kitty/kitty.conf "$SCRIPT_DIR"/config_backup/.config/kitty/kitty.co
 # backup omp config and extensions (not sessions, DBs, blobs, or other large/ephemeral state)
 mkdir -p "$SCRIPT_DIR"/config_backup/.omp/agent/extensions
 cp ~/.omp/agent/config.yml "$SCRIPT_DIR"/config_backup/.omp/agent/config.yml
+cp ~/.omp/agent/models.yml "$SCRIPT_DIR"/config_backup/.omp/agent/models.yml
 cp -r ~/.omp/agent/extensions/. "$SCRIPT_DIR"/config_backup/.omp/agent/extensions/
 
 cp ~/.zshrc "$SCRIPT_DIR"/config_backup/.zshrc

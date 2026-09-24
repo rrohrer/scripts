@@ -1,0 +1,11 @@
+providers:
+  daedalus:
+    baseUrl: http://daedalus:8080/v1
+    api: openai-completions
+    auth: none
+    discovery:
+      type: openai-models-list
+    modelOverrides:
+      swift-qwen3.8-27b:
+        name: Qwen3.8 27B Swift (daedalus)
+        reasoning: true
